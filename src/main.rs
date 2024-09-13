@@ -1,6 +1,15 @@
-use std::env;
+#![allow(dead_code)]
+#![allow(unused_variables)]
+#![allow(unused_variables)]
+
+use std::{env, process::abort};
 
 extern crate fuse;
+
+use fuse::Filesystem;
+struct NothingFilesystem;
+
+impl Filesystem for NothingFilesystem {}
 
 fn main() {
     let args = env::args().collect::<Vec<String>>();
@@ -8,6 +17,14 @@ fn main() {
     for (argc, argv) in args.iter().skip(1).enumerate() {
         arg(argc, argv);
     }
+    //
+    let mount = match env::args().nth(2) {
+        Some(path) => path,
+        None => {
+            eprintln!("Usage: {} <ini.file> <mountpoint>", args[0]);
+            abort();
+        }
+    };
 }
 
 fn arg(argc: usize, argv: &String) {

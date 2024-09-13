@@ -8,8 +8,10 @@ NOW    = $(shell date +%d%m%y)
 TARGET = thumbv7m-none-eabi
 
 # dir
-CWD = $(CURDIR)
-CAR = $(HOME)/.cargo/bin
+CWD   = $(CURDIR)
+TMP   = $(CWD)/tmp
+CAR   = $(HOME)/.cargo/bin
+MOUNT = $(TMP)/mount
 
 # tool
 CURL   = curl -L -o
@@ -25,7 +27,7 @@ R += $(wildcard src/*.rs)
 all: $(R)
 	$(CARGO) build
 run: lib/$(MODULE).ini $(R)
-	$(CARGO) run -- $<
+	$(CARGO) run -- $< tmp/mount
 
 # format
 .PHONY: format
