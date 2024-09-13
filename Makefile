@@ -27,7 +27,7 @@ R += $(wildcard src/*.rs)
 all: $(R)
 	$(CARGO) build
 run: lib/$(MODULE).ini $(R)
-	$(CARGO) run -- $< tmp/mount
+	mkdir -p tmp/mount ; $(CARGO) run -- $< tmp/mount
 
 # format
 .PHONY: format

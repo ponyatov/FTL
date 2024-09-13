@@ -7,6 +7,7 @@ use std::{env, process::abort};
 extern crate fuse;
 
 use fuse::Filesystem;
+
 struct NothingFilesystem;
 
 impl Filesystem for NothingFilesystem {}
@@ -25,6 +26,7 @@ fn main() {
             abort();
         }
     };
+    fuse::mount(NothingFilesystem, &mount, &[]).unwrap();
 }
 
 fn arg(argc: usize, argv: &String) {
