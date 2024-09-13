@@ -1,5 +1,7 @@
 use std::env;
 
+extern crate fuse;
+
 fn main() {
     let args = env::args().collect::<Vec<String>>();
     arg(0, &args[0]);
