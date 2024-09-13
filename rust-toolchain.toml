@@ -1,5 +1,6 @@
 [toolchain]
 channel    = "stable"
 components = [ "rustfmt" ]
+# cargo install cargo-binutils
 targets    = [ "x86_64-unknown-linux-gnu", "thumbv7m-none-eabi" ]
 profile    = "minimal"

@@ -9,6 +9,12 @@ categories  = ["embedded", "hardware-support", "no-std"]
 version     = "0.0.1"
 edition     = "2021"
 
-[dependencies]
+[dependencies.x86_64-unknown-linux-gnu]
 fuse = "0.3.1"
 pcap = "2.2.0"
+
+[dependencies.thumbv7m-none-eabi]
+cortex-m = "*"
+cortex-m-rt = "*"
+cortex-m-semihosting = "*"
+panic-halt = "*"
