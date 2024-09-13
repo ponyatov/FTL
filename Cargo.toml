@@ -1,0 +1,12 @@
+[package]
+name        = "ftl"
+description = "NAND Flash Translation Layer"
+authors     = ["Dmitry Ponyatov <dponyatov@gmail.com>"]
+repository  = "https://github.com/dponyatov/FTL"
+license     = "MIT"
+keywords    = ["nand", "flash", "translation", "layer"]
+categories  = ["embedded", "hardware-support", "no-std"]
+version     = "0.0.1"
+edition     = "2021"
+
+[dependencies]
