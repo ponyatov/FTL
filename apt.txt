@@ -1,0 +1,4 @@
+git make curl
+code meld doxygen clang-format
+build-essential g++ flex bison libreadline-dev
+gcc-arm-none-eabi gdb-multiarch stlink-gui qemu-system-arm ragel
