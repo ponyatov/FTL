@@ -27,6 +27,7 @@ R += $(wildcard src/*.rs)
 all: $(R)
 	$(CARGO) build
 run: lib/$(MODULE).ini $(R)
+	( sleep 2 ; umount tmp/mount ) &
 	mkdir -p tmp/mount ; $(CARGO) run -- $< tmp/mount
 
 # format
