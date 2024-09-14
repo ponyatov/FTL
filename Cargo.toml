@@ -30,4 +30,5 @@ pcap = "2.2.0"
 # mik32 = "*"
 
 [features]
+default = ["nand"]
 nand = []
