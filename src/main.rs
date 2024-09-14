@@ -3,7 +3,6 @@
 #![allow(unused_imports)]
 
 mod config;
-use config::*;
 
 use std::{env, process::abort};
 
@@ -15,6 +14,7 @@ struct NothingFilesystem;
 
 impl Filesystem for NothingFilesystem {}
 
+/// program entry point
 fn main() {
     let args = env::args().collect::<Vec<String>>();
     arg(0, &args[0]);
@@ -32,6 +32,7 @@ fn main() {
     fuse::mount(NothingFilesystem, &mount, &[]).unwrap();
 }
 
+/// print command line argument to stderr
 fn arg(argc: usize, argv: &String) {
     eprintln!("argv[{argc}] = <{argv}>");
 }
