@@ -1,6 +1,9 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
-#![allow(unused_variables)]
+#![allow(unused_imports)]
+
+mod config;
+use config::*;
 
 use std::{env, process::abort};
 
