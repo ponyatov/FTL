@@ -11,6 +11,8 @@ version     = "0.0.1"
 edition     = "2021"
 
 [dependencies]
+
+[dev-dependencies]
 cargo-binutils = "0.3.6"
 
 [target.'cfg(unix)'.dependencies]
