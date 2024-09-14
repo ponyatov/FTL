@@ -2,6 +2,9 @@
 #![allow(unused_variables)]
 #![allow(unused_imports)]
 
+//! <b>FTL</b>: NAND Flash translation layer
+
+mod bib;
 mod config;
 
 use std::{env, process::abort};
@@ -14,6 +17,8 @@ struct NothingFilesystem;
 
 impl Filesystem for NothingFilesystem {}
 
+const PROGRAM_USAGE: &str = "Usage: FTL <ini.file> <mountpoint>";
+
 /// program entry point
 fn main() {
     let args = env::args().collect::<Vec<String>>();
@@ -25,7 +30,7 @@ fn main() {
     let mount = match env::args().nth(2) {
         Some(path) => path,
         None => {
-            eprintln!("Usage: {} <ini.file> <mountpoint>", args[0]);
+            eprintln!("{}", PROGRAM_USAGE);
             abort();
         }
     };

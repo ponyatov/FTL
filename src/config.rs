@@ -1,3 +1,5 @@
+//! program configuration
+
 /// 4K page
 const PAGE_SIZE: usize = 4096;
 /// pages per block
