@@ -28,3 +28,6 @@ pcap = "2.2.0"
 # 
 # [dependencies.riscv32imc-unknown-none-elf]
 # mik32 = "*"
+
+[features]
+nand = []

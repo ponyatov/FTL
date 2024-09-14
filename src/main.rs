@@ -7,6 +7,9 @@
 mod bib;
 mod config;
 
+#[cfg(feature = "nand")]
+mod nand;
+
 use std::{env, process::abort};
 
 extern crate fuse;
