@@ -45,6 +45,11 @@ doc/The_Rust_Programming_Language.pdf: $(HOME)/doc/Rust/The_Rust_Programming_Lan
 $(HOME)/doc/Rust/The_Rust_Programming_Language.pdf:
 	$(CURL) $@ https://www.scs.stanford.edu/~zyedidia/docs/rust/rust_book.pdf
 
+.PHONY: doxy
+doxy: $(R)
+	$(CARGO) doc --no-deps --document-private-items \
+					--workspace --target-dir docs
+
 # install
 .PHONY: install update ref gz
 install: doc ref gz $(RUSTUP)

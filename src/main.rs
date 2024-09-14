@@ -33,6 +33,8 @@ fn main() {
 }
 
 /// print command line argument to stderr
+/// @param[in] argc
+/// @param[in] argv
 fn arg(argc: usize, argv: &String) {
     eprintln!("argv[{argc}] = <{argv}>");
 }
