@@ -53,7 +53,7 @@ doxy: $(R)
 # install
 .PHONY: install update ref gz
 install: doc ref gz $(RUSTUP)
-	$(MAKE) update rust
+	$(MAKE) rust update
 update: $(RUSTUP)
 	sudo apt update
 	sudo apt install -uy `cat apt.txt`
@@ -67,3 +67,4 @@ rust: $(RUSTUP)
 	$(RUSTUP) target add $(TARGET)
 $(RUSTUP):
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+ln -s ../../doc/Rust/Блэнди Дж., Орендорф Дж. - Программирование на языке Rust.pdf Блэнди Дж., Орендорф Дж. - Программирование на языке Rust.pdf
