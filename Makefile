@@ -31,6 +31,7 @@ H += $(wildcard inc/*.h*)
 
 # cfg
 CFLAGS += -Iinc -Itmp
+CFLAGS += -D_FILE_OFFSET_BITS=64 -DLINUX
 
 # all
 .PHONY: run all
