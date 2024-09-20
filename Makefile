@@ -31,7 +31,11 @@ H += $(wildcard inc/*.h*)
 
 # cfg
 CFLAGS += -Iinc -Itmp
-CFLAGS += -D_FILE_OFFSET_BITS=64 -DLINUX
+CFLAGS += -DLINUX
+CFLAGS += $(shell pkg-config fuse --cflags)
+
+# libs
+L += $(shell pkg-config fuse --libs)
 
 # all
 .PHONY: run all
@@ -43,7 +47,8 @@ run: lib/$(MODULE).ini $(R)
 
 .PHONY: cpp
 cpp: bin/$(MODULE) lib/$(MODULE).ini
-	mkdir -p tmp/mount ; $^ tmp/mount
+# ( sleep 2 ; umount tmp/mount ) &
+	mkdir -p tmp/mount ; bin/$(MODULE) -f tmp/mount
 
 # format
 .PHONY: format
