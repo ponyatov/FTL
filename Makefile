@@ -19,7 +19,7 @@ MOUNT = $(TMP)/mount
 
 # tool
 CURL   = curl -L -o
-CF     = clang-format
+CF     = clang-format -style=file -i
 RUSTUP = $(CAR)/rustup
 CARGO  = $(CAR)/cargo
 GITREF = git clone --depth 1
@@ -29,6 +29,9 @@ R += $(wildcard src/*.rs)
 C += $(wildcard src/*.c*)
 H += $(wildcard inc/*.h*)
 
+# cfg
+CFLAGS += -Iinc -Itmp
+
 # all
 .PHONY: run all
 all: $(R)
@@ -37,13 +40,21 @@ run: lib/$(MODULE).ini $(R)
 	( sleep 2 ; umount tmp/mount ) &
 	mkdir -p tmp/mount ; $(CARGO) run -- $< tmp/mount
 
+.PHONY: cpp
+cpp: bin/$(MODULE) lib/$(MODULE).ini
+	mkdir -p tmp/mount ; $^ tmp/mount
+
 # format
 .PHONY: format
-format: tmp/format_rs
+format: tmp/format_rs tmp/format_cpp
 tmp/format_rs: $(R)
 	$(CARGO) check && $(CARGO) fmt && touch $@
+tmp/format_cpp: $(C) $(H)
+	$(CF) $? && touch $@
 
 # rule
+bin/$(MODULE): $(C) $(H)
+	$(CXX) $(CFLAGS) -o $@ $(C) $(L)
 
 # doc
 .PHONY: doc
