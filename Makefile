@@ -42,13 +42,17 @@ L += $(shell pkg-config fuse --libs)
 all: $(R)
 	$(CARGO) build
 run: lib/$(MODULE).ini $(R)
-	( sleep 2 ; umount tmp/mount ) &
+	$(MAKE) checkfs &
 	mkdir -p tmp/mount ; $(CARGO) run -- $< tmp/mount
 
 .PHONY: cpp
 cpp: bin/$(MODULE) lib/$(MODULE).ini
-# ( sleep 2 ; umount tmp/mount ) &
-	mkdir -p tmp/mount ; bin/$(MODULE) -f tmp/mount
+	$(MAKE) checkfs &
+	mkdir -p tmp/mount ; bin/$(MODULE) -d -s tmp/mount 2> tmp/log
+
+.PHONY: checkfs
+checkfs:
+	sleep 1 ; ls -la tmp/mount ; umount tmp/mount
 
 # format
 .PHONY: format
