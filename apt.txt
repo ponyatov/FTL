@@ -1,5 +1,6 @@
 git make curl
 code meld doxygen clang-format
-build-essential g++ flex bison libreadline-dev
-gcc-arm-none-eabi gdb-multiarch stlink-gui qemu-system-arm ragel
+build-essential g++
+flex bison libreadline-dev ragel
+gcc-arm-none-eabi gdb-multiarch stlink-gui qemu-system-arm
 libfuse-dev libpcap-dev

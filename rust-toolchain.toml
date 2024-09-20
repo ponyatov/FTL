@@ -1,5 +1,5 @@
 [toolchain]
 channel    = "stable"
-components = [ "rustfmt", "llvm-tools" ]
+components = [ "rust-analyzer", "rustfmt", "llvm-tools" ]
 targets    = [ "x86_64-unknown-linux-gnu", "thumbv7m-none-eabi" ]
 profile    = "minimal"

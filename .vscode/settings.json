@@ -52,7 +52,7 @@
         "editor.defaultFormatter": "xaver.clang-format",
         "editor.formatOnSave":     true
     },
-    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "C_Cpp.intelliSenseEngine":    "Tag Parser",
 
     // Rust
     "rust-analyzer.checkOnSave": true,
